@@ -48,5 +48,27 @@ namespace AutoMouseClickActivator
 
              return null;
         }
+
+        public static string GetDiskSerial(string drivePath)
+        {
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Tag,SerialNumber FROM Win32_PhysicalMedia"))
+            {
+                using(ManagementObjectCollection drives = searcher.Get())
+                {
+                    foreach (ManagementBaseObject drive in drives)
+                    {
+                        string driveTag = drive["Tag"].ToString();
+                        string driveSerial = drive["SerialNumber"].ToString();
+
+                        if (driveTag == drivePath)
+                        {
+                            return driveSerial;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }
