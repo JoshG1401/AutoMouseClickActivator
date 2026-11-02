@@ -5,7 +5,7 @@ This is not a fancy tool. I threw it together somewhat quickly early in the morn
 
 This project has been on my mind for a little while. I don't know if it has been done before but I did it anyway \
 I spent a number of hours reverse engineering the AutoMouseClick tool, digging through its code and understanding how it handles registration.\
-In the end, I found 2 methods to activate the software manually. The method in this tool was the more interesting of the two.
+In the end, I found 2 methods to activate the software manually, without the need to purchase a license. The method in this tool was the more interesting of the two.
 
 I have tested this only on the latest AutoMouseClick version, 99.2 \
 I have tested this on two devices of mine, and it worked but there may be issues I have not come across on other devices.
