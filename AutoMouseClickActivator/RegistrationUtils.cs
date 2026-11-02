@@ -14,6 +14,8 @@ namespace AutoMouseClickActivator
             string machineCode = (seedDigits + processorId + driveSerial).ToLowerInvariant();
             ulong codeSum = 0;
 
+            Console.WriteLine($"Machine code: {machineCode}");
+            
             foreach (char c in machineCode)
             {
                 codeSum = unchecked(codeSum + c);
