@@ -15,12 +15,16 @@ namespace AutoMouseClickActivator
                 if (key != null)
                 {
                     key.SetValue(RegName, registrationCode);
-                    
+
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Registration key has been saved to the registry");
+                    Console.ResetColor();
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Could not create registry key! Regisration key has not been saved to the registry");
+                    Console.ResetColor();
                 }
             }
         }
