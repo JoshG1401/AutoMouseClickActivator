@@ -45,6 +45,7 @@
         <Compile Include="ProcessorUtils.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="RegistrationUtils.cs" />
         <Compile Include="RegistryUtils.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
