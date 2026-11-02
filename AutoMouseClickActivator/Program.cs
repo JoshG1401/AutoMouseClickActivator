@@ -7,6 +7,19 @@ namespace AutoMouseClickActivator
         public static void Main(string[] args)
         {
             Console.Title = "AutoMouseClicker by Murgee Activator";
+            
+            string windowsDrive = DiskUtils.GetWindowsDrive();
+            string windowsDriveSerial = DiskUtils.GetDiskSerial(windowsDrive);
+            string processorId = ProcessorUtils.GetProcessorId();
+            
+            Console.WriteLine("Using below parameters for registration calculation:");
+            Console.WriteLine($"Windows Drive: {windowsDrive}");
+            Console.WriteLine($"Windows Drive Serial: {windowsDriveSerial}");
+            Console.WriteLine($"Processor ID: {processorId}");
+            
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
         }
     }
 }
