@@ -18,9 +18,11 @@ namespace AutoMouseClickActivator
             Console.WriteLine($"Processor ID: {processorId}");
             
             Console.WriteLine("");
-            Console.WriteLine("Calculating registration code...");
+            Console.Write($"Calculated registration code: ");
             string regisrationCode = RegistrationUtils.GenerateRegistrationCode(processorId, windowsDriveSerial);
             Console.WriteLine($"Regisration code: {regisrationCode}");
+            
+            RegistryUtils.WriteKeyToRegistry(regisrationCode);
             
             Console.WriteLine();
             Console.WriteLine("Press any key to exit");
