@@ -28,5 +28,13 @@ namespace AutoMouseClickActivator
                 }
             }
         }
+
+        public static bool HasExistingKey()
+        {
+            using(RegistryKey key = Registry.CurrentUser.OpenSubKey(RegKey))
+            {
+                return key != null;
+            }
+        }
     }
 }
