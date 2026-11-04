@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Management;
 
@@ -70,5 +71,29 @@ namespace AutoMouseClickActivator
 
             return null;
         }
+
+        public static string GetVolumeSerial()
+        {
+            string driveLetter = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.Windows)).TrimEnd('\\');
+            
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher($"SELECT VolumeSerialNumber FROM Win32_LogicalDisk WHERE DeviceID='{driveLetter}'"))
+            {
+                using(ManagementObjectCollection drives = searcher.Get())
+                {
+                    foreach (ManagementBaseObject drive in drives)
+                    {
+                        if (drive == null) continue;
+                        string serial = drive["VolumeSerialNumber"].ToString();
+
+                        return uint.Parse(serial, NumberStyles.HexNumber, CultureInfo.InvariantCulture)
+                            .ToString("X", CultureInfo.InvariantCulture);
+                    }
+                }
+            }
+
+            return null;
+        }
+        
+        
     }
 }
