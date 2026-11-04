@@ -60,6 +60,7 @@ namespace AutoMouseClickActivator
             
             RegistryUtils.WriteKeyToRegistry(regisrationCode);
             RegistryUtils.WriteRectData(processorId, windowsVolumeSerial, unchecked((uint)appCreationTime));
+            RegistryUtils.WriteHardwareId(windowsDriveSerial, processorId);
             RegistryUtils.ResetRunCounters();
             Console.ResetColor();
             

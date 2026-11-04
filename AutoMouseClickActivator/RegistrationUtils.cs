@@ -2,7 +2,7 @@ namespace AutoMouseClickActivator
 {
     public static class RegistrationUtils
     {
-        private const string Seed = "74426706456454411826978487914285447126202082839025043275962389026"; // Do not change this or registration will not work
+        public const string Seed = "74426706456454411826978487914285447126202082839025043275962389026"; // Do not change this or registration will not work
         
         public static string GenerateRegistrationCode(string processorId, string driveSerial)
         {

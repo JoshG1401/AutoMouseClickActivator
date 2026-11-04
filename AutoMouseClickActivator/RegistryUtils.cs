@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using Microsoft.Win32;
 
 namespace AutoMouseClickActivator
@@ -80,6 +81,17 @@ namespace AutoMouseClickActivator
             
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Application run counters reset");
+        }
+
+        public static void WriteHardwareId(string driveSerial, string processorId)
+        {
+            string hardwareId = RegistrationUtils.Seed + processorId + driveSerial;
+            string finalizedId = string.Join(string.Empty, hardwareId.ToLowerInvariant().ToCharArray().Reverse());
+            
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\MurGee.com\\Auto Mouse Click by MurGee.com\\Settings"))
+            {
+                key?.SetValue(string.Empty, finalizedId, RegistryValueKind.String);
+            }
         }
 
         public static bool HasExistingKey()
