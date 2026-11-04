@@ -1,8 +1,6 @@
 # AutoMouseClickActivator
 Activator program for the AutoMouseClick tool by Murgee
 
-This is not a fancy tool. I threw it together somewhat quickly early in the morning...
-
 This project has been on my mind for a little while. I don't know if it has been done before but I did it anyway \
 I spent a number of hours reverse engineering the AutoMouseClick tool, digging through its code and understanding how it handles registration.\
 In the end, I found 2 methods to activate the software manually, without the need to purchase a license. The method in this tool was the more interesting of the two.
