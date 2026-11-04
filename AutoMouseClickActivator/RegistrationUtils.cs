@@ -16,5 +16,17 @@ namespace AutoMouseClickActivator
 
             return codeSum.ToString();
         }
+
+        public static uint ProcessRectData(string input)
+        {
+            uint result = 1;
+
+            foreach (char c in input)
+            {
+                result = unchecked(result * c);
+            }
+
+            return result;
+        }
     }
 }
