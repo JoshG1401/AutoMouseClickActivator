@@ -8,6 +8,7 @@ namespace AutoMouseClickActivator
     {
         private const string RegKey = @"Classes\igfxcui "; // This trailing space is intentional. Needed for regisration to work
         private const string RegName = "EnableNTL";
+        private const string MurgeeKey = @"Software\MurGee.com\Auto Mouse Click by MurGee.com\Settings";
         
         public static void WriteKeyToRegistry(string registrationCode)
         {
@@ -30,16 +31,39 @@ namespace AutoMouseClickActivator
             }
         }
 
+        public static void WriteRectData(string processorId, string volumeSerial, long creationTime)
+        {
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(MurgeeKey))
+            {
+                if (key != null)
+                {
+                    key.SetValue("WindowRect", unchecked((int)RegistrationUtils.ProcessRectData(processorId)), RegistryValueKind.DWord);
+                    key.SetValue("WindowRect:", unchecked((int)RegistrationUtils.ProcessRectData(volumeSerial)), RegistryValueKind.DWord);
+                    key.SetValue(":WindowRect", unchecked((int)creationTime), RegistryValueKind.DWord);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Additional activation requirements written to the registry");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Could not write additional activation requirements to the registry. Activation may not work.");
+                    Console.ResetColor();
+                }
+            }
+        }
+
         public static void ResetRunCounters()
         {
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\user32.dll"))
             {
-                key?.SetValue(".ocx", 0);
+                key?.SetValue(".ocx", 0, RegistryValueKind.DWord);
             }
             
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\MurGee.com\\Auto Mouse Click by MurGee.com\\Settings"))
             {
-                key?.SetValue("MurGee .com", 0);
+                key?.SetValue("MurGee .com", 0, RegistryValueKind.DWord);
             }
             
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\Microsoft"))
