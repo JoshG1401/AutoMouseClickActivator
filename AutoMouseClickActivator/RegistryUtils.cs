@@ -77,6 +77,9 @@ namespace AutoMouseClickActivator
             {
                 File.Delete(usbFile);
             }
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Application run counters reset");
         }
 
         public static bool HasExistingKey()
