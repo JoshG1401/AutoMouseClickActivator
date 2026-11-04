@@ -12,7 +12,7 @@ namespace AutoMouseClickActivator
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("An existing registry key was found for AutoMouseClick activation.");
-                Console.Write("Do you wish to proceed with activation again? This will overwrite the current key (y/N): ");
+                Console.Write("Do you wish to proceed with activation again? This will overwrite the current values (y/N): ");
                 Console.ResetColor();
                 string input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input) || input.ToLower() != "y")
